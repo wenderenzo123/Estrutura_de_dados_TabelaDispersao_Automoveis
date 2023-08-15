@@ -8,5 +8,6 @@ public class AVLNode {
     public AVLNode(Veiculo veiculo) {
         this.veiculo = veiculo;
         this.altura = 1;
+        this.chave = veiculo.placa.hashCode();
     }
 }

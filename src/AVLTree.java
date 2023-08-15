@@ -23,10 +23,10 @@ public class AVLTree {
         if (node == null) {
             return new AVLNode(veiculo);
         }
-
-        if (veiculo.placa.compareTo(node.veiculo.placa) < 0) {
+    
+        if (veiculo.placa.hashCode() < node.chave) {
             node.esquerdo = inserir(node.esquerdo, veiculo);
-        } else if (veiculo.placa.compareTo(node.veiculo.placa) > 0) {
+        } else if (veiculo.placa.hashCode() > node.chave) {
             node.direito = inserir(node.direito, veiculo);
         } else {
             return node;
@@ -139,8 +139,10 @@ public class AVLTree {
     }
 
     public void listarEmOrdem(AVLNode node) {
+        //listar com a chave
         if (node != null) {
             listarEmOrdem(node.esquerdo);
+            System.out.println("Chave: " + node.chave);
             System.out.println("Placa: " + node.veiculo.placa);
             System.out.println("Renavam: " + node.veiculo.renavam);
             System.out.println("Condutor: " + node.veiculo.nomeCondutor);
@@ -149,17 +151,46 @@ public class AVLTree {
             System.out.println("------------------------");
             listarEmOrdem(node.direito);
         }
+        
     }
+
+    // public Veiculo buscarVeiculo(String placa, AVLNode node) {
+    //     if (node == null) {
+    //         return null;
+    //     }
+
+    //     if (placa.compareTo(node.veiculo.placa) < 0) {
+    //         return buscarVeiculo(placa, node.esquerdo);
+    //     } else if (placa.compareTo(node.veiculo.placa) > 0) {
+    //         return buscarVeiculo(placa, node.direito);
+    //     } else {
+    //         return node.veiculo;
+    //     }
+    // }
 
     public Veiculo buscarVeiculo(String placa, AVLNode node) {
         if (node == null) {
             return null;
         }
-
-        if (placa.compareTo(node.veiculo.placa) < 0) {
+    
+        if (placa.hashCode() < node.chave) {
             return buscarVeiculo(placa, node.esquerdo);
-        } else if (placa.compareTo(node.veiculo.placa) > 0) {
+        } else if (placa.hashCode() > node.chave) {
             return buscarVeiculo(placa, node.direito);
+        } else {
+            return node.veiculo;
+        }
+    }
+
+    public Veiculo buscarRenavam(String renavam, AVLNode node) {
+        if (node == null) {
+            return null;
+        }
+
+        if (renavam.compareTo(node.veiculo.renavam) < 0) {
+            return buscarRenavam(renavam, node.esquerdo);
+        } else if (renavam.compareTo(node.veiculo.renavam) > 0) {
+            return buscarRenavam(renavam, node.direito);
         } else {
             return node.veiculo;
         }

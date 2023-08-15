@@ -10,9 +10,8 @@ public class Servidor {
     private void inicializarVeiculos() {
         // Adicionar 50 veículos à árvore
         for (int i = 10; i < 60; i++) {
-            Veiculo veiculo = new Veiculo("ABC" + i, "0042" + i, "Condutor" + i, "Modelo" + i, "2023",2023);
+            Veiculo veiculo = new Veiculo("ABC" + i, "0042" + i, "Condutor" + i, "Modelo" + i, "2023", 2023);
             arvoreVeiculos.raiz = arvoreVeiculos.inserir(arvoreVeiculos.raiz, veiculo);
-            
         }
     }
 
@@ -27,9 +26,8 @@ public class Servidor {
         System.out.println("Altura da árvore de veículos: " + arvoreVeiculos.altura(arvoreVeiculos.raiz));
     }
 
-
     public void listarVeiculos() {
-        //listar veiculos da arvore veiculos
+        // listar veiculos da arvore veiculos
         arvoreVeiculos.listarEmOrdem(arvoreVeiculos.raiz);
         exibirAlturaArvore();
     }

@@ -6,7 +6,8 @@ public class Condutor {
         this.nome = nome;
         this.cpf = cpf;
     }
-    // gets e sets
+    public Condutor() {
+    }
     public String getCpf() {
         return cpf;
     }

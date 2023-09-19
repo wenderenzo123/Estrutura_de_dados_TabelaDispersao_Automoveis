@@ -1,8 +1,8 @@
 public class ProtocoloComunicacao {
     private Servidor servidor;
 
-    public ProtocoloComunicacao() {
-        servidor = new Servidor();
+    public ProtocoloComunicacao(boolean tipoTabela) {
+        servidor = new Servidor(tipoTabela);
     }
 
     public String cadastrarVeiculo(Veiculo veiculo) {
@@ -10,7 +10,7 @@ public class ProtocoloComunicacao {
     }
 
     public void listarVeiculos() {
-        servidor.listarVeiculos();
+        System.out.println(servidor.listarVeiculos());
     }
 
     public String alterarVeiculo(String placa, Veiculo novoVeiculo) {
@@ -23,5 +23,9 @@ public class ProtocoloComunicacao {
 
     public int quantidadeVeiculos() {
         return servidor.quantidadeVeiculos();
+    }
+
+    public Veiculo buscarVeiculo(String placaBusca) {
+        return servidor.BuscarVeiculoPorPlaca(placaBusca);
     }
 }
